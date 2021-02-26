@@ -1,0 +1,88 @@
+:root {
+  --h: 220;
+  --s: 80%;
+  --l: 50%;
+  --a: 100%;
+  --primary: hsl(var(--h), var(--s), calc(var(--l) * 0.5), 100%);
+  --secondary: hsl(var(--h), var(--s), var(--l), 100%);
+  --accent: hsl(calc(var(--h) - 175), var(--s), var(--l), 100%);
+  --black: hsl(var(--h), var(--s), calc(var(--l) * 0.05), var(--a));
+  --white: hsl(var(--h), var(--s), 100%, var(--a));
+  --error: hsl(0, 87%, 60%, var(--a));
+  --success: hsl(132, 49%, 35%, var(--a));
+
+  --outline: 0 0 0 2px var(--black);
+  --shadow: 8px 8px 0 var(--black);
+
+  /* sizing */
+  --xs: 0.25rem;
+  --sm: 0.5rem;
+  --base: 1rem;
+  --md: 1.25rem;
+  --lg: 1.5rem;
+  --xxl: 2rem;
+  --xxxl: 3rem;
+  --full: 100%;
+
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background: var(--primary);
+  color: var(--white);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+input {
+  width: 100%;
+  padding: var(--xs);
+  letter-spacing: 1.2px;
+  transition: var(--transition);
+  background: transparent;
+  color: inherit;
+  text-transform: uppercase;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+input::placeholder {
+  color: inherit;
+  /* for firefox */
+  opacity: 0.8;
+}
+input:focus,
+button:focus {
+  outline: none;
+  box-shadow: var(--outline);
+  border-radius: var(--xs);
+}
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: var(--success);
+  color: var(--white);
+  padding: var(--sm);
+  border-radius: var(--xs);
+  box-shadow: var(--shadow);
+  font-size: clamp(var(--base), 1.5vw, var(--md));
+  font-weight: bold;
+  transition: var(--transition);
+}
+button:hover {
+  --shadow: 4px 4px 0 var(--black);
+  box-shadow: var(--shadow), var(--outline);
+  filter: brightness(1.1);
+}
+/* button:not(:hover) {
+  box-shadow: var(--shadow);
+} */
+
+button:active {
+  position: relative;
+  top: 1px;
+  box-shadow: var(--outline);
+}
+.text-center {
+  text-align: center;
+}
