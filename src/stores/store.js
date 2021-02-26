@@ -7,52 +7,32 @@ const defaultColumns = [
     id: uid(),
     title: 'Todo',
     cards: [
-      {
-        id: uid(),
-        title: 'Card Title',
-      },
+
     ],
   },
   {
     id: uid(),
     title: 'In Progress',
     cards: [
-      {
-        id: uid(),
-        title: 'Card Title',
-      },
+
     ],
   },
   {
     id: uid(),
     title: 'Complete',
     cards: [
-      {
-        id: uid(),
-        title: 'Card Title',
-      },
+
     ],
   },
 ]
 
 function getNewColumn() {
-  console.log('got')
   return {
     id: uid(),
     title: 'Title',
     cards: [
-      {
-        id: uid(),
-        title: 'Card Title',
-      },
-    ],
-  }
-}
 
-function getNewCard() {
-  return {
-    id: uid(),
-    title: 'Card Title',
+    ],
   }
 }
 
