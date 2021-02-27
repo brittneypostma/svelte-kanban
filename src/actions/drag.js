@@ -1,5 +1,6 @@
 import { spring } from 'svelte/motion'
 
+// function that is executed when the element is mounted
 export function drag(node, params) {
   console.log(node, params)
 }
