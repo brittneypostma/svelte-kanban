@@ -90,6 +90,7 @@ button:active {
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 header * + * {
   margin-left: var(--sm);

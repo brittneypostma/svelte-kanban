@@ -1,10 +1,25 @@
 <script>
-  import {addColumn} from '../stores/store'
+  import { store, addColumn } from '../stores/store'
+  
+  import { dndzone } from 'svelte-dnd-action'
+
+  $: handleDndConsiderColumns = (e) => {
+    $store = e.detail.items
+  }
+  $: handleDndFinalizeColumns = (e) => {
+    $store = e.detail.items
+  }
 </script>
 
 <section>
-  <button class="add" on:click={addColumn}>&plus;</button>
-  <slot />
+  <button class="add" on:click="{addColumn}">&plus;</button>
+  <section
+    use:dndzone="{{ items: $store, type: 'columns' }}"
+    on:consider="{handleDndConsiderColumns}"
+    on:finalize="{handleDndFinalizeColumns}"
+  >
+    <slot />
+  </section>
 </section>
 
 <style>

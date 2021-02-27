@@ -1,23 +1,27 @@
 <script>
   import { store } from '../stores/store'
 
-  function deleteCard(colIdx, cardIdx, id) {
-    console.log($store)
+  function deleteCard(colIdx, id) {
       $store[colIdx].cards = $store[colIdx].cards.filter(card => card.id !== id)
   }
 
-  export let column
   export let colIdx
   export let card
   export let cardIdx
+
+  function updateTitle(e) {
+    const newTitle = e.target.value
+    $store[colIdx].cards[cardIdx].title = newTitle
+  }
+
 </script>
 
 <section class="card">
   <header>
     <h3>
-      <input type="text" bind:value="{column.cards[cardIdx].title}" />
+      <input type="text" bind:value={card.title} on:change={updateTitle} />
     </h3>
-    <button class="delete" on:click="{deleteCard(colIdx, cardIdx, card.id)}">
+    <button class="delete" on:click="{deleteCard(colIdx, card.id)}">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
