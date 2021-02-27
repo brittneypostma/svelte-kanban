@@ -86,3 +86,19 @@ button:active {
 .text-center {
   text-align: center;
 }
+
+header {
+  display: flex;
+  align-items: center;
+}
+header * + * {
+  margin-left: var(--sm);
+}
+input {
+  border-bottom: 4px solid var(--black);
+}
+.delete {
+  background: var(--error);
+  width: var(--xxxl);
+  color: var(--white);
+}

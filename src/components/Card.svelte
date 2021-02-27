@@ -1,5 +1,38 @@
+<script>
+  import { store } from '../stores/store'
+
+  function deleteCard(colIdx, cardIdx, id) {
+    console.log($store)
+      $store[colIdx].cards = $store[colIdx].cards.filter(card => card.id !== id)
+  }
+
+  export let column
+  export let colIdx
+  export let card
+  export let cardIdx
+</script>
+
 <section class="card">
-  <h3><input type="text" placeholder="Card Title" /></h3>
+  <header>
+    <h3>
+      <input type="text" bind:value="{column.cards[cardIdx].title}" />
+    </h3>
+    <button class="delete" on:click="{deleteCard(colIdx, cardIdx, card.id)}">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+        ></path>
+      </svg>
+    </button>
+  </header>
 </section>
 
 <style>

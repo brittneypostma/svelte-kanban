@@ -22,10 +22,6 @@
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--primary);
   }
-
-  section :global(.col) + :global(.col) {
-    margin-left: var(--lg);
-  }
   /* *Chrome Scrollbar* */
   section::-webkit-scrollbar {
     height: 8px;
