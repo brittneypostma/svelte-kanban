@@ -13,10 +13,9 @@
     const newTitle = e.target.value
     $store[colIdx].cards[cardIdx].title = newTitle
   }
-
 </script>
 
-<section class="card">
+
   <header>
     <h3>
       <input type="text" bind:value={card.title} on:change={updateTitle} />
@@ -37,15 +36,4 @@
       </svg>
     </button>
   </header>
-</section>
 
-<style>
-  .card {
-    background: var(--white);
-    border-radius: var(--xs);
-    color: var(--black);
-    padding: var(--base);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2),
-      0 4px 6px -2px rgba(0, 0, 0, 0.15);
-  }
-</style>

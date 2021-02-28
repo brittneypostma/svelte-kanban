@@ -1,28 +1,52 @@
 <script>
-  import Card from './Card.svelte'
+  import { flip } from 'svelte/animate'
+  import {store} from '../stores/store'
   import { dndzone } from 'svelte-dnd-action'
+  import Card from './Card.svelte'
 
   export let column
   export let colIdx
 
-  function handleDndConsiderCards(cid, e) {
-        const colIdx = columnItems.findIndex(c => c.id === cid);
-        columnItems[colIdx].items = e.detail.items;
-        columnItems = [...columnItems];
-    }
-    function handleDndFinalizeCards(cid, e) {
-        const colIdx = columnItems.findIndex(c => c.id === cid);
-        columnItems[colIdx].items = e.detail.items;
-        columnItems = [...columnItems];
-    }
+  function handleDndConsiderCards(e) {
+    $store[colIdx].cards = e.detail.items
+    $store[colIdx].cards = [...$store[colIdx].cards]
+  }
+  function handleDndFinalizeCards(e) {
+    $store[colIdx].cards = e.detail.items
+    $store[colIdx].cards = [...$store[colIdx].cards]
+  }
 </script>
 
-
-<article 
-  use:dndzone={{items: column.cards }}
-  on:consider={(e) => handleDndConsiderCards(column.id)}
-  on:finalize={(e) => handleDndFinalizeCards(column.id, e)}>
+<article
+  colIdx="{colIdx}"
+  use:dndzone="{{ items: column.cards }}"
+  on:consider="{handleDndConsiderCards}"
+  on:finalize="{handleDndFinalizeCards}"
+>
   {#each column.cards as card, cardIdx (card.id)}
-    <Card {colIdx} {card} {cardIdx}/>
+    <section
+      class="card"
+      animate:flip="{{ duration: 300 }}"
+      id="{card.id}"
+      cardIdx="{cardIdx}"
+    >
+      <Card colIdx="{colIdx}" card="{card}" cardIdx="{cardIdx}" />
+    </section>
   {/each}
 </article>
+
+<style>
+  article {
+    height: 100%;
+    overflow-y: auto;
+  }
+  .card {
+    cursor: move;
+    background: var(--white);
+    border-radius: var(--xs);
+    color: var(--black);
+    padding: var(--base);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2),
+      0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  }
+</style>

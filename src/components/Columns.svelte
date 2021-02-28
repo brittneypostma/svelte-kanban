@@ -1,30 +1,51 @@
 <script>
   import { flip } from 'svelte/animate'
   import Column from './Column.svelte'
-  import {store} from '../stores/store.js'
-  
-  import {drag} from '../actions/drag'
+  import { store } from '../stores/store.js'
 
-  console.log(drag($store))
+  import { dndzone } from 'svelte-dnd-action'
+  function handleDndConsiderColumns(e) {
+    $store = e.detail.items
+  }
+  function handleDndFinalizeColumns(e) {
+    $store = e.detail.items
+  }
 </script>
 
-{#each $store as column, idx (column.id)}
-  <div class="col" id="{column.id}" idx="{idx}" animate:flip={{duration: 300}}>
-    <Column {column} idx={idx}/>
-  </div>
-{/each}
+<div
+  use:dndzone="{{ items: $store, type: 'columns' }}"
+  on:consider="{handleDndConsiderColumns}"
+  on:finalize="{handleDndFinalizeColumns}"
+>
+  {#each $store as column, idx (column.id)}
+    <section
+      class="col"
+      id="{column.id}"
+      idx="{idx}"
+      animate:flip="{{ duration: 300 }}"
+    >
+      <Column column="{column}" idx="{idx}" />
+    </section>
+  {/each}
+</div>
 
 <style>
   div {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  section {
     margin-right: var(--lg);
     height: 100%;
     box-shadow: var(--shadow);
     border-radius: var(--lg);
-    cursor: move;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
   }
 
-  
   .col {
+    user-select: none;
     border-radius: var(--lg);
     height: 100%;
     min-width: 300px;
@@ -36,6 +57,15 @@
     align-items: start;
     align-content: flex-start;
     padding: var(--base);
+  }
+
+  :global(.dragged) {
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  :global(.droptarget) {
+    background: red;
   }
 
   /* .dragging {
