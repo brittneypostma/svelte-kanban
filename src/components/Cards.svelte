@@ -8,12 +8,14 @@
   export let colIdx
 
   function handleDndConsiderCards(e) {
+
+    console.log(e)
     $store[colIdx].cards = e.detail.items
-    $store[colIdx].cards = [...$store[colIdx].cards]
+    // $store[colIdx].cards = [...$store[colIdx].cards]
   }
   function handleDndFinalizeCards(e) {
     $store[colIdx].cards = e.detail.items
-    $store[colIdx].cards = [...$store[colIdx].cards]
+    // $store[colIdx].cards = [...$store[colIdx].cards]
   }
 </script>
 
@@ -38,7 +40,9 @@
 <style>
   article {
     height: 100%;
+    min-height: 100px;
     overflow-y: auto;
+    background: transparent;
   }
   .card {
     cursor: move;
