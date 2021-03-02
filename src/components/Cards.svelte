@@ -15,6 +15,7 @@
   }
   function handleDndFinalizeCards(e) {
     $store[colIdx].cards = e.detail.items
+
     // $store[colIdx].cards = [...$store[colIdx].cards]
   }
 </script>

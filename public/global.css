@@ -3,9 +3,9 @@
   --s: 80%;
   --l: 50%;
   --a: 100%;
-  --primary: hsl(var(--h), var(--s), calc(var(--l) * 0.5), 100%);
-  --secondary: hsl(var(--h), var(--s), var(--l), 100%);
-  --accent: hsl(calc(var(--h) - 175), var(--s), var(--l), 100%);
+  --primary: hsl(var(--h), var(--s), calc(var(--l) * 0.5), var(--a));
+  --secondary: hsl(var(--h), var(--s), var(--l), var(--a));
+  --accent: hsl(calc(var(--h) - 175), var(--s), var(--l), var(--a));
   --black: hsl(var(--h), var(--s), calc(var(--l) * 0.05), var(--a));
   --white: hsl(var(--h), var(--s), 100%, var(--a));
   --error: hsl(0, 87%, 60%, var(--a));

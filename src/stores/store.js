@@ -45,15 +45,15 @@ export function deleteColumn(id) {
   store.update((cols) => cols.filter((column) => column.id !== id))
 }
 
-export function update(id) {
-  store.update(cols => {
-    return cols.map(col => {
-      if (col.id === id) {
-        return ({
-          ...col
-        })
-      } else return {...col}
-    })
-  })
+// export function update(id) {
+//   store.update(cols => {
+//     return cols.map(col => {
+//       if (col.id === id) {
+//         return ({
+//           ...col
+//         })
+//       } else return {...col}
+//     })
+//   })
   
-}
+// }
