@@ -58,19 +58,4 @@
     align-content: flex-start;
     padding: var(--base);
   }
-
-  :global(.dragged) {
-    pointer-events: none;
-    z-index: 100;
-  }
-
-  :global(.droptarget) {
-    background: red;
-  }
-
-  /* .dragging {
-    filter: brightness(1.1);
-    box-shadow:  0 0 0 5px var(--secondary);
-    border-radius: var(--lg);
-  } */
 </style>

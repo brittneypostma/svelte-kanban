@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
   <slot />
 </main>
 <footer class="text-center">
@@ -14,4 +14,4 @@
   footer {
     padding: var(--sm);
   }
-</style>
+</style> -->
